@@ -9,24 +9,12 @@ const increaseVisitors = asyncHandler(async (req, res) => {
   console.log(req.url)
   let url = req.url
   const count = await Visitors.findById(id)
-  if (url === '/pic/increase') {
-    const visitorsDeclinedInDb = count.visitorsDeclined
-    count.visitorsDeclined = visitorsDeclinedInDb + 1
-  } else if (url === '/pic/agree/increase') {
-    const visitorsAgreedInDb = count.visitorsAgreed
-    count.visitorsAgreed = visitorsAgreedInDb + 1
-  } else if (url === '/dvl/increase') {
+  if (url === '/dvl/increase') {
     const visitorsDeclinedDvlInDb = count.visitorsDeclinedDvl
     count.visitorsDeclinedDvl = visitorsDeclinedDvlInDb + 1
   } else if (url === '/dvl/agree/increase') {
     const visitorsAgreedDvlInDb = count.visitorsAgreedDvl
     count.visitorsAgreedDvl = visitorsAgreedDvlInDb + 1
-  } else if (url === '/io/increase') {
-    const visitorsDeclinedIoInDb = count.visitorsDeclinedIo
-    count.visitorsDeclinedIo = visitorsDeclinedIoInDb + 1
-  } else if (url === '/io/agree/increase') {
-    const visitorsAgreedIoInDb = count.visitorsAgreedIo
-    count.visitorsAgreedIo = visitorsAgreedIoInDb + 1
   } else {
     console.log('unknown url')
   }

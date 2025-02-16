@@ -15,12 +15,8 @@ const app = express()
 
 app.use(
   cors({
-    origin: [
-      'http://localhost:5173',
-      'https://kvalitnamontaz.sk',
-      'https://librosophia.sk',
-    ],
-  })
+    origin: ['http://localhost:5173', 'https://kvalitnamontaz.sk', 'https://librosophia.sk'],
+  }),
 )
 
 app.use(express.json())
@@ -33,14 +29,12 @@ app.get('/', (req, res) => {
   res.send('Hello from KM - Backend!')
 })
 
-const PORT = 7000
+const PORT = process.env.PORT
 
 const startServer = async () => {
   connectDB()
   try {
-    app.listen(PORT, () =>
-      console.log(`km-server running on port ${PORT}`.yellow.bold)
-    )
+    app.listen(PORT, () => console.log(`km-server running on port ${PORT}`.yellow.bold))
   } catch (error) {
     console.log(error)
   }
